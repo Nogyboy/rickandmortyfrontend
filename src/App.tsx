@@ -14,8 +14,8 @@ function App() {
     <Provider store={store}>
      <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} /> 
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/rickandmortyfrontend/" element={<Home />} /> 
+        <Route path="/rickandmortyfrontend/detail" element={<Detail />} />
       </Routes>
     </BrowserRouter>
     </Provider>

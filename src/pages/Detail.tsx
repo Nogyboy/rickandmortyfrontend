@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import useFetchCharacters from "../hooks/useFetchCharacters";
-import { SearchIcon, XIcon } from '@heroicons/react/outline';
 import Spinner from '../components/Spinner';
 import circuitBoard from '../assets/circuitBoard.svg';
 
