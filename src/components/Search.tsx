@@ -3,7 +3,6 @@ import useFetchCharacters from "../hooks/useFetchCharacters";
 import { Combobox } from '@headlessui/react'
 
 import Spinner from "../components/Spinner";
-import { SearchIcon, XIcon } from '@heroicons/react/outline';
 
 
 const Search = () => {
