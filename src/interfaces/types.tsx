@@ -12,6 +12,7 @@
         loading: boolean;
         error: string | null;
         page: number;
+        id: number;
     }
 
     export const GET_CHARACTERS = 'GET_CHARACTERS';

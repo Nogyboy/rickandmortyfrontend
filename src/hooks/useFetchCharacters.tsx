@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCharacter, getCharactersSuccess, getCharactersFailure } from "../slice/slice";
 import { Character } from "../interfaces/types";
@@ -9,6 +9,7 @@ import { getCharacters, getCharacterById, getCharactersByIds } from "../config/c
 
 const useFetchCharacters = () => {
   const dispatch = useDispatch();
+ 
   const { characters, loading, error, page } = useSelector(
     (state: RootState) => state.characters
   );
@@ -25,23 +26,27 @@ const useFetchCharacters = () => {
     }
      
   };
+
+
+    const setPage = (page: number) => { 
+      dispatch(getCharacter(page));
+    };
+
+    
     useEffect(() => {
-      const fetchCharacters = async () => {
-        try {
-          dispatch(getCharacter(page));
-          const data = await getCharacters(page);
-          dispatch(getCharactersSuccess(data));
-        } catch (error: any) {
-          dispatch(getCharactersFailure(error.message));
-        }
-      };
-      fetchCharacters();
-
-
-
+      
+      (async() => {  
+          try { 
+            dispatch(getCharacter(page)); 
+            const data = await getCharacters(page); 
+            dispatch(getCharactersSuccess(data)); 
+          } catch (error: any) {
+            dispatch(getCharactersFailure(error.message));
+          } 
+      })() 
     }, [dispatch, page]);
 
-    return { characters, loading, error, getAllCharacters };
+    return { characters, loading, error, getAllCharacters, setPage,page,  };
   } 
 
 export default useFetchCharacters

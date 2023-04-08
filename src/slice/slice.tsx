@@ -5,8 +5,9 @@ import { CharacterState } from '../interfaces/types';
 const initialState: CharacterState = {
   characters: [],
   loading: false,
-  error: null,
-  page: 1,
+  error: null, 
+  page: 1, 
+  id: 0,
 };
 
 const characterSlice = createSlice({
