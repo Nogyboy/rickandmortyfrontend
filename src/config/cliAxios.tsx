@@ -10,16 +10,16 @@ const client = axios.create({
   },
 });
 
-  const getCharacters = async (page: number) => {
+const getCharacters = async (page: number, name: string) => {
   try {
-    const response = await client.get(`/character/?page=${page}`);
+    const response = await client.get(`/character/?page=${page}&name=${name}`);
     return response.data;
   } catch (error) {
     console.error(error);
   }
 };
 
- const getCharacterById = async (id: number) => {
+const getCharacterById = async (id: number) => {
   try {
     const response = await client.get(`character/${id}`);
     return response.data;
@@ -28,7 +28,7 @@ const client = axios.create({
   }
 };
 
-  const getCharactersByIds = async (ids: number[]) => {
+const getCharactersByIds = async (ids: number[]) => {
   try {
     const response = await client.get(`character/${ids}`);
     return response.data;
@@ -38,4 +38,4 @@ const client = axios.create({
 };
 
 
-export {getCharacters, getCharacterById, getCharactersByIds}
+export { getCharacters, getCharacterById, getCharactersByIds }

@@ -13,6 +13,7 @@
         error: string | null;
         page: number;
         id: number;
+        name: string;
     }
 
     export const GET_CHARACTERS = 'GET_CHARACTERS';
@@ -32,6 +33,14 @@
     export interface GetCharactersFailureAction {
         type: typeof GET_CHARACTERS_FAILURE;
         payload: string;
+    }
+
+    export interface FilterCharacterByName {
+        charactersFilter: Character[];
+        loading: boolean;
+        error: string | null;
+        name: string;
+
     }
 
     export type CharacterAction = GetCharactersAction | GetCharactersSuccessAction | GetCharactersFailureAction;

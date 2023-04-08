@@ -1,24 +1,35 @@
-import React from "react";
+import React,{useState} from "react";
+import useFetchCharacters from "../hooks/useFetchCharacters";
 
+import { Link } from 'react-router-dom';
 interface Props {
+  id: number,
   name: string;
   image: string;
   status: string;
 }
 
-const Card = ({ name, image, status }: Props) => {
-  return (
-    <div className="bg-gray-800 text-white overflow-hidden shadow rounded-lg border border-gray-500 border-opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-gradient-to-br from-sky-500 to-blue-800">
-      <div className="px-4 py-5 sm:p-6">
-        <h3 className="text-lg leading-6 font-medium">{name}</h3>
+const Card = ({id, name, image, status }: Props) => {
+  const {  setID }: any = useFetchCharacters();
+  const [isLiked, setIsLiked] =  useState(false);
+
+
+  return ( 
+    <div className="group relative bg-white rounded-md overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+    <Link onClick={() => setID(id)} to={"detail"} className="block w-full h-full">
+      <div className="aspect-w-1 aspect-h-1 bg-gray-200 lg:aspect-none">
         <img
           src={image}
           alt={name}
-          className="w-full h-auto rounded mt-4"
+          className="object-cover object-center h-full w-full lg:h-full lg:w-full transition duration-300 group-hover:opacity-75"
         />
-        <p className="mt-2 max-w-2xl text-center">{status}</p>
       </div>
-    </div>
+      <div className="p-4">
+        <h3 className="text-lg font-medium text-gray-900">{name}</h3>
+        <p className="mt-1 text-sm text-gray-500">{status}</p>
+      </div>
+    </Link>
+  </div>
   );
 };
 
