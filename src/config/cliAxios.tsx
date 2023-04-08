@@ -14,8 +14,9 @@ const getCharacters = async (page: number, name: string) => {
   try {
     const response = await client.get(`/character/?page=${page}&name=${name}`);
     return response.data;
-  } catch (error) {
+  } catch (error) { 
     console.error(error);
+    return error
   }
 };
 

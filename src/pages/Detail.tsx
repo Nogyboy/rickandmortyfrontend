@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import useFetchCharacters from "../hooks/useFetchCharacters";
+import useFetchCharacters from "../hooks/useFetchCharacters"; 
 import Spinner from '../components/Spinner';
 import circuitBoard from '../assets/circuitBoard.svg';
 

@@ -8,24 +8,23 @@ import Spinner from "../components/Spinner";
 import Search from "../components/Search";
 
 const Home = () => {
-    const { characters, error, setPage, page, name, clearName, setID, loading, setName, }: any = useFetchCharacters();
+    const { characters, error, setPage, page, name, }: any = useFetchCharacters();
     const [render, setRender] = useState(false);
     const [pageTotal, setPageTotal] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
-    const [data, setData] = useState<any>([]);
- 
-    
+
+
     useEffect(() => {
 
         setRender(false)
         if (characters !== undefined && characters && characters.results && characters.results.length > 0 && error === null) {
-            setRender(true);
-            setPageTotal(characters.info.pages);
 
+            setPageTotal(characters.info.pages);
+            setRender(true);
         } else {
             setRender(false);
         }
-    }, [characters, page, name]);
+    }, [characters, page,name]);
 
 
     const handlePrevPage = () => {
@@ -39,8 +38,6 @@ const Home = () => {
     };
 
 
-    const [selectedPerson, setSelectedPerson] = useState(null)
-    const [query, setQuery] = useState('')
 
 
     return (
