@@ -15,7 +15,7 @@ const characterSlice = createSlice({
   name: 'characters',
   initialState,
   reducers: {
-    getCharacter(state, action: PayloadAction<number>) {
+    getCharacterRequest(state, action: PayloadAction<number>) {
       state.loading = true;
       state.page = action.payload;
     },
@@ -40,6 +40,6 @@ const characterSlice = createSlice({
   },
 });
  
-export const { getCharacter, getCharactersSuccess, getCharactersFailure, setDataCharacterByName, setDataCharacterId} = characterSlice.actions;
+export const { getCharacterRequest, getCharactersSuccess, getCharactersFailure, setDataCharacterByName, setDataCharacterId} = characterSlice.actions;
 
 export default characterSlice.reducer;

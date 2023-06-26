@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCharacter, getCharactersSuccess, getCharactersFailure, setDataCharacterByName, setDataCharacterId } from "../slice/slice";
+import { getCharacterRequest, getCharactersSuccess, getCharactersFailure, setDataCharacterByName, setDataCharacterId } from "../slice/slice";
  
 
 import { Character } from "../interfaces/types";
@@ -21,6 +21,8 @@ interface FetchCharactersData {
   getCharacterDetailByID: () => Promise<Character | undefined>;
   setID: (id: number) => void;
 }
+
+
 const useFetchCharacters = (): FetchCharactersData => {
   const dispatch = useDispatch();
   const { characters, loading, error, page, name, id } = useSelector(
@@ -28,7 +30,7 @@ const useFetchCharacters = (): FetchCharactersData => {
   );
 
   const setPage = (page: number): void => {
-    dispatch(getCharacter(page));
+    dispatch(getCharacterRequest(page));
   };
 
   const setName = (name: string): void => {
@@ -60,9 +62,9 @@ const useFetchCharacters = (): FetchCharactersData => {
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       try {
-        memoizedDispatch(getCharacter(memoizedPage));
+        memoizedDispatch(getCharacterRequest(memoizedPage));
         const data = await getCharacters(memoizedPage, memoizedName);
-        console.log("🚀 ~ file: useFetchCharacters.tsx:65 ~ fetchData ~ data:", data)
+        // console.log("🚀 ~ file: useFetchCharacters.tsx:65 ~ fetchData ~ data:", data)
         
         if (data !== undefined) {
           memoizedDispatch(getCharactersSuccess(data));

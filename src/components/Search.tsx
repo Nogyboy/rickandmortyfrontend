@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import useFetchCharacters from "../hooks/useFetchCharacters";
 import { Combobox } from '@headlessui/react'
-import Spinner from "../components/Spinner";
 
 
 const Search = () => {
@@ -39,7 +38,7 @@ const Search = () => {
                     <Combobox value={selectedPerson} onChange={setSelectedPerson} >
                         <Combobox.Input
                             className="w-full px-4 py-2 border-2 border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-gray-500"
-                            placeholder="Search for a character"
+                            placeholder="Buscar por personaje..."
                             onChange={(event:any) => {
                                 const inputValue = event.target.value;
                                 if (inputValue === null || inputValue === undefined) {
@@ -51,9 +50,9 @@ const Search = () => {
                         />
                         <button
                             onClick={handleClearSearch}
-                            className="absolute right-0 top-0 bg-gray-500 hover:bg-gray-400 text-white font-medium py-2 px-4 rounded-l-full"
+                            className="absolute right-0 top-0 bg-cyan-500 hover:bg-cyan-400 text-white font-medium h-full w-1/12 rounded-l-full"
                         >
-                            Delete
+                            Borrar
                         </button>
                          
                     </Combobox>

@@ -8,12 +8,12 @@
     }
 
     export interface CharacterState {
-        characters: Character[];
         loading: boolean;
         error: string | null;
         page: number;
         id: number;
         name: string;
+        characters: Character[];
     }
 
     export const GET_CHARACTERS = 'GET_CHARACTERS';
